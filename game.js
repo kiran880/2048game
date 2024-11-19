@@ -193,8 +193,7 @@ class Game2048 {
         const container = document.querySelector('.tile-container');
         container.innerHTML = '';
 
-        const gameContainer = document.querySelector('.game-container');
-        const cellSize = (gameContainer.offsetWidth - 30) / 4; // 30px for padding
+        const tileSize = (container.offsetWidth - 45) / 4;
         const gap = 15;
 
         for (let i = 0; i < 4; i++) {
@@ -204,14 +203,11 @@ class Game2048 {
                     tile.className = `tile tile-${this.grid[i][j]}`;
                     tile.textContent = this.grid[i][j];
                     
-                    // Calculate position based on container size
-                    const top = 15 + i * (cellSize + gap);
-                    const left = 15 + j * (cellSize + gap);
+                    const top = i * (tileSize + gap);
+                    const left = j * (tileSize + gap);
                     
                     tile.style.top = `${top}px`;
                     tile.style.left = `${left}px`;
-                    tile.style.width = `${cellSize}px`;
-                    tile.style.height = `${cellSize}px`;
                     
                     container.appendChild(tile);
                 }
